@@ -3,7 +3,7 @@ import { DataSourcesService } from './data-sources.service';
 import { CreateDataSourceDto } from './dto/create-data-source.dto';
 import { UpdateDataSourceDto } from './dto/update-data-source.dto';
 
-@Controller('data-sources')
+@Controller('api/data-sources')
 export class DataSourcesController {
     constructor(private readonly dataSourcesService: DataSourcesService) { }
 

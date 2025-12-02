@@ -6,9 +6,9 @@ import { AuthGuard } from '@nestjs/passport';
 import { User } from '../auth/interfaces/user.interface';
 
 @UseGuards(AuthGuard('jwt'))
-@Controller('workspaces')
+@Controller('api/workspaces')
 export class WorkspacesController {
-  constructor(private readonly workspacesService: WorkspacesService) {}
+  constructor(private readonly workspacesService: WorkspacesService) { }
 
   @Post()
   create(@Request() req: ExpressRequest, @Body() createWorkspaceDto: CreateWorkspaceDto) {

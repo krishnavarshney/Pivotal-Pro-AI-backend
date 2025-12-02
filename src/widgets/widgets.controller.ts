@@ -7,9 +7,9 @@ import { AuthGuard } from '@nestjs/passport';
 import { User } from '../auth/interfaces/user.interface';
 
 @UseGuards(AuthGuard('jwt'))
-@Controller('widgets')
+@Controller('api/widgets')
 export class WidgetsController {
-  constructor(private readonly widgetsService: WidgetsService) {}
+  constructor(private readonly widgetsService: WidgetsService) { }
 
   @Post()
   create(@Request() req: ExpressRequest, @Body() createWidgetDto: CreateWidgetDto) {

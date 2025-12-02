@@ -11,6 +11,8 @@ import { WidgetsModule } from './widgets/widgets.module';
 import * as redisStore from 'cache-manager-redis-store';
 import { ConfigModule } from '@nestjs/config';
 import { DataSourcesModule } from './data-sources/data-sources.module';
+import { AiModule } from './ai/ai.module';
+import { StoriesModule } from './stories/stories.module';
 
 @Module({
   imports: [
@@ -28,6 +30,8 @@ import { DataSourcesModule } from './data-sources/data-sources.module';
     PagesModule,
     WidgetsModule,
     DataSourcesModule,
+    AiModule,
+    StoriesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

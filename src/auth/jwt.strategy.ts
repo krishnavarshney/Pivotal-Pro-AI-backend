@@ -10,10 +10,16 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(private prisma: PrismaService, private configService: ConfigService) {
     super({
       jwtFromRequest: (req: Request) => {
-        if (req && req.cookies) {
-          return req.cookies['jwt'];
+        let token = null;
+        if (req && req.cookies && req.cookies['jwt']) {
+          token = req.cookies['jwt'];
+        } else if (req.headers.authorization) {
+          const authHeader = req.headers.authorization;
+          if (authHeader.startsWith('Bearer ')) {
+            token = authHeader.substring(7, authHeader.length);
+          }
         }
-        return null;
+        return token;
       },
       ignoreExpiration: false,
       secretOrKey: configService.get<string>('JWT_SECRET') || 'supersecret',

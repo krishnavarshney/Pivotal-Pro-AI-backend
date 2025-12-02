@@ -6,10 +6,10 @@ import { UpdatePageDto } from './dto/update-page.dto';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { UnauthorizedException } from '@nestjs/common';
 
-@Controller('pages')
+@Controller('api/pages')
 @UseGuards(JwtAuthGuard)
 export class PagesController {
-  constructor(private readonly pagesService: PagesService) {}
+  constructor(private readonly pagesService: PagesService) { }
 
   @Post()
   async create(@Req() req: ExpressRequest, @Body() createPageDto: CreatePageDto) {

@@ -4,9 +4,9 @@ import { GeneratePresignedUrlDto } from './dto/file.dto';
 import { AuthGuard } from '@nestjs/passport';
 
 @UseGuards(AuthGuard('jwt'))
-@Controller('files')
+@Controller('api/files')
 export class FilesController {
-  constructor(private readonly filesService: FilesService) {}
+  constructor(private readonly filesService: FilesService) { }
 
   @Post('presigned-url')
   async generatePresignedUrl(@Body() generatePresignedUrlDto: GeneratePresignedUrlDto) {
