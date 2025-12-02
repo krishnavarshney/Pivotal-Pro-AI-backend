@@ -1,98 +1,143 @@
+# ⚡ Pivotal‑Pro AI — Backend  
+Enterprise‑grade backend for Pivotal‑Pro AI, built with **NestJS + Prisma**.  
+Provides secure APIs, rule execution engines, AI proxy, user auth, and data persistence.
+
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
+  <img src="https://dummyimage.com/1200x260/0d1117/ffffff&text=Pivotal-Pro+AI" />
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
+<p align="center">
+  <a href="#"><img src="https://img.shields.io/badge/NestJS-Framework-ea2845?style=for-the-badge&logo=nestjs" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/Prisma-ORM-2d3748?style=for-the-badge&logo=prisma" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/TypeScript-Backend-blue?style=for-the-badge&logo=typescript" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/Docker-Ready-2496ed?style=for-the-badge&logo=docker" /></a>
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+---
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 🔥 Overview  
+This backend provides:  
+- Authentication + sessions  
+- AI proxy (Gemini, future LLMs)  
+- Rule engine execution  
+- Dashboard data API  
+- Persistent storage via Prisma  
+- Modular NestJS architecture  
 
-## Project setup
+Perfect for high‑scale BI, underwriting, rule evaluation, and enterprise AI workflows.
 
-```bash
-$ npm install
+---
+
+## 🧩 Key Features  
+
+### 🏗 NestJS Architecture  
+- Modules, controllers, services  
+- Built‑in dependency injection  
+- High testability  
+
+### 🗄 Prisma + DB  
+- Prisma schema + migrations  
+- PostgreSQL / MySQL ready  
+- Auto‑generated types  
+
+### 🔐 Security  
+- Environment‑based config  
+- Token auth  
+- Clean proxying of AI keys  
+
+### 🧠 AI Proxy  
+- Server‑side Gemini calls  
+- Avoid exposing keys in frontend  
+
+---
+
+## 📁 Project Structure  
+
+```
+src/
+ ├── modules/
+ ├── controllers/
+ ├── services/
+ ├── interceptors/
+ ├── filters/
+ └── main.ts
+
+prisma/
+ ├── schema.prisma
+ └── migrations/
+
+Dockerfile
+package.json
 ```
 
-## Compile and run the project
+---
 
+## ⚙️ Getting Started  
+
+### Installation  
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+git clone https://github.com/krishnavarshney/Pivotal-Pro-AI-backend.git
+cd Pivotal-Pro-AI-backend
+npm install
 ```
 
-## Run tests
-
+### Environment  
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+cp .env.example .env
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+Add:  
+```
+DATABASE_URL=postgresql://user:pass@localhost:5432/pivotal
+PORT=8000
+JWT_SECRET=your-secret
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+### Migrations  
+```bash
+npx prisma migrate dev
+```
 
-## Resources
+### Start Development  
+```bash
+npm run start:dev
+```
 
-Check out a few resources that may come in handy when working with NestJS:
+---
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## 🐳 Docker  
+```bash
+docker build -t pivotal-ai-backend .
+docker run -p 8000:8000 pivotal-ai-backend
+```
 
-## Support
+---
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## 🧪 Testing  
+```bash
+npm run test
+npm run test:e2e
+npm run test:cov
+```
 
-## Stay in touch
+---
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## 🚀 Production Checklist  
+- Enable HTTPS  
+- Run Prisma migrations on boot  
+- Use managed DB (RDS / Cloud SQL)  
+- Configure PM2 or Docker healthchecks  
 
-## License
+---
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+## 🤝 Contributing  
+1. Create a feature branch  
+2. Ensure code follows NestJS style  
+3. Add tests where needed  
+4. Submit PR  
+
+---
+
+## 📄 License  
+MIT License  
+Maintained by **Krishna Varshney**  
